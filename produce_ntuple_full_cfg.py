@@ -59,15 +59,18 @@ process.hgcl1tpg_step = cms.Path(process.hgcalTriggerPrimitives)
 
 # load ntuplizer
 process.load('L1Trigger.L1THGCal.hgcalTriggerNtuples_cff')
-#process.hgcalTriggerNtuplizer.Ntuples = cms.VPSet(
-#        process.ntuple_event,
-#        process.ntuple_gen,
-#        process.ntuple_genjet,
-#        process.ntuple_gentau,
-#        process.ntuple_triggercells,
-#        process.ntuple_clusters,
-#        process.ntuple_multicluster
-#        )
+
+process.ntuple_triggercells.FilterCellsInMulticlusters=cms.bool(False)
+process.hgcalTriggerNtuplizer.Ntuples = cms.VPSet(
+        process.ntuple_event,
+        process.ntuple_gen,
+        process.ntuple_genjet,
+        process.ntuple_gentau,
+        #process.ntuple_digis,
+        process.ntuple_triggercells,
+        process.ntuple_clusters,
+        process.ntuple_multicluster
+        )
 process.ntuple_step = cms.Path(process.hgcalTriggerNtuples)
 
 # Schedule definition
