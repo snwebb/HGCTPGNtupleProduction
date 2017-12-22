@@ -61,6 +61,7 @@ process.hgcl1tpg_step = cms.Path(process.hgcalTriggerPrimitives)
 process.load('L1Trigger.L1THGCal.hgcalTriggerNtuples_cff')
 
 process.ntuple_triggercells.FilterCellsInMulticlusters=cms.bool(False)
+process.ntuple_clusters.FilterClustersInMulticlusters = cms.bool(False)
 process.hgcalTriggerNtuplizer.Ntuples = cms.VPSet(
         process.ntuple_event,
         process.ntuple_gen,
