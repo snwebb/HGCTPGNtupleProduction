@@ -59,6 +59,7 @@ process.GlobalTag = GlobalTag(process.GlobalTag, 'auto:phase2_realistic', '')
 process.load('L1Trigger.L1THGCal.hgcalTriggerPrimitives_cff')
 process.load('L1Trigger.L1THGCalUtilities.HGC3DClusterGenMatchSelector_cff')
 process.load('L1Trigger.L1THGCalUtilities.hgcalTriggerNtuples_cff')
+process.ntuple_multiclusters.FillLayerInfo = cms.bool(True)
 from L1Trigger.L1THGCalUtilities.hgcalTriggerChains import HGCalTriggerChains
 import L1Trigger.L1THGCalUtilities.vfe as vfe
 import L1Trigger.L1THGCalUtilities.concentrator as concentrator
@@ -76,6 +77,7 @@ chains.register_vfe("Floatingpoint7", lambda p : vfe.create_compression(p, 4, 3,
 ## ECON
 chains.register_concentrator("Supertriggercell", concentrator.create_supertriggercell)
 chains.register_concentrator("Threshold", concentrator.create_threshold)
+chains.register_concentrator("Bestchoice", concentrator.create_bestchoice)
 ## BE1
 chains.register_backend1("Ref2d", clustering2d.create_constrainedtopological)
 chains.register_backend1("Dummy", clustering2d.create_dummy)
@@ -116,7 +118,7 @@ chains.register_ntuple("Clustersntuple", lambda p,i : ntuple.create_ntuple(p,i, 
 chains.register_chain('Floatingpoint8', "Threshold", 'Ref2d', 'Ref3d', 'Genmatch', 'Genclustersntuple')
 ## Test impact of 7 bits FP
 chains.register_chain('Floatingpoint7', "Threshold", 'Dummy', 'Histomaxth10', 'Genmatch', 'Clustersntuple')
-concentrator_algos = ['Supertriggercell', 'Threshold']
+concentrator_algos = ['Supertriggercell', 'Threshold', 'Bestchoice']
 backend_algos = ['Histomaxth0', 'Histomaxth10', 'Histomaxth20',
         'Histomaxdr25', 'Histomaxdr50', 'Histomaxdr100']
 ## Make cross product fo ECON and BE algos
