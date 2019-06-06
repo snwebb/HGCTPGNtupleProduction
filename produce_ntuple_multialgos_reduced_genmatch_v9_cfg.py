@@ -78,6 +78,9 @@ chains.register_vfe("Floatingpoint7", lambda p : vfe.create_compression(p, 4, 3,
 chains.register_concentrator("Supertriggercell", concentrator.create_supertriggercell)
 chains.register_concentrator("Threshold", concentrator.create_threshold)
 chains.register_concentrator("Bestchoice", concentrator.create_bestchoice)
+chains.register_concentrator("Supertriggercell4444Fixed",  lambda p,i : concentrator.create_supertriggercell(p,i,stcSize=cms.vuint32(4,8,8,8),fixedDataSizePerHGCROC=True ))
+chains.register_concentrator("Equalshare", concentrator.create_supertriggercell(p,i,stcSize=cms.vuint32(4,8,8,8),fixedDataSizePerHGCROC=True,type_energy_division='equalShare')))
+chains.register_concentrator("Onebit4444Fixed",  lambda p,i : concentrator.create_onebitfraction)
 ## BE1
 chains.register_backend1("Ref2d", clustering2d.create_constrainedtopological)
 chains.register_backend1("Dummy", clustering2d.create_dummy)
