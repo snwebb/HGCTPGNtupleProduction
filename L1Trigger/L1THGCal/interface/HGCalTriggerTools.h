@@ -86,6 +86,7 @@ private:
   unsigned fhLayers_;
   unsigned bhLayers_;
   unsigned totalLayers_;
+  static constexpr unsigned kScintillatorPseudoThicknessIndex_ = 3;
 
   int sensorCellThicknessV8(const DetId& id) const;
 };

@@ -58,6 +58,10 @@ private:
   static constexpr int kHGCalCellMaskV9Inv_ = ~0xff;
   static constexpr int kHGCalScinCellMaskInv_ = ~0x1ffff;
 
+  static constexpr int kRocNum1_ = 1;
+  static constexpr int kRocNum2_ = 2;
+  static constexpr int kRocNum3_ = 3;
+
   HGCalTriggerTools triggerTools_;
   HGCSiliconDetIdToROC detIdToROC_;
   std::vector<unsigned> ctcSize_;
